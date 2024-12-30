@@ -1,0 +1,322 @@
+/* Centering Container */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    transition: background-color 0.5s ease, transform 0.3s ease;
+}
+
+/* Keyframe Animations */
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes bounceIn {
+    0% { transform: scale(0.9); opacity: 0; }
+    50% { transform: scale(1.05); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes themeTransition {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* Animation for message bubbles */
+.message .bubble {
+    animation: slideIn 0.5s ease-out;
+}
+
+.login-container {
+    animation: bounceIn 0.6s ease-out;
+}
+
+.chat-box .message {
+    opacity: 0;
+    animation: fadeIn 0.7s forwards;
+}
+
+/* General Body Style */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fafafb;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* Login Container Styling */
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+    max-width: 95%;
+    background: linear-gradient(145deg, #ffffff, #e0e0e0);
+    padding: 35px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    perspective: 1500px;  /* Create a 3D perspective */
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease;
+}
+
+/* Add 3D effect on hover */
+.login-container:hover {
+    transform: rotateY(10deg) rotateX(5deg);  /* Slight rotation to give a 3D look */
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);  /* Enhance the shadow */
+}
+
+/* Add 3D effect to inputs */
+.login-container input {
+    width: 100%;
+    padding: 14px;
+    border-radius: 10px;
+    border: none;
+    margin-bottom: 15px;
+    background-color: #f7f7f7;
+    font-size: 16px;
+    color: #333;
+    outline: none;
+    box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-container input:focus {
+    background-color: #eaeaea;
+    transform: translateZ(10px);  /* Create a "pop" effect by moving the input forward */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);  /* Enhance shadow to match the 3D effect */
+}
+
+/* Button hover effect with 3D transformation */
+.login-container button {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    background: linear-gradient(135deg, #842e59, #5e1d39);
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 10px;
+}
+
+.login-container button:hover {
+    background: linear-gradient(135deg, #5e1d39, #842e59);
+    transform: translateY(-5px) scale(1.05);  /* Create a lift effect on hover */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);  /* Enhance shadow for the 3D feel */
+}
+
+/* Chat Container */
+#chat-container {
+    display: none;
+    flex-direction: column;
+    width: 400px;
+    max-width: 95%;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    animation: themeTransition 0.5s ease-in-out;
+}
+
+/* Chat Header */
+.chat-header {
+    background: linear-gradient(135deg, #CAB9F1, #7b2952);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+    position: relative;
+}
+
+.theme-toggle {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: #7b2952;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.theme-toggle:hover {
+    background-color: #5c203d;
+}
+
+/* Chat Box and Messages */
+.chat-box {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background-color: #f8f9fc;
+    max-height: 60vh;
+}
+
+.message {
+    margin-bottom: 15px;
+    display: flex;
+    opacity: 0;
+    animation: fadeIn 0.7s forwards;
+}
+
+.message.user {
+    justify-content: flex-end;
+}
+
+.message .bubble {
+    max-width: 70%;
+    padding: 14px 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.message.bot .bubble {
+    background: linear-gradient(135deg, #CAB9F1, #b098da);
+    color: white;
+}
+
+.message.user .bubble {
+    background-color: #EAEAEA;
+    color: #333;
+}
+
+.message .bubble:hover {
+    transform: scale(1.05);
+}
+
+/* Chat Input */
+.chat-input {
+    display: flex;
+    padding: 15px;
+    border-top: 1px solid #ddd;
+    background-color: white;
+}
+
+.chat-input input {
+    flex-grow: 1;
+    padding: 12px;
+    border-radius: 20px;
+    border: none;
+    background-color: #f0f0f0;
+    font-size: 16px;
+    box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.3s ease;
+}
+
+.chat-input input:focus {
+    background-color: #e7e7e7;
+}
+
+.chat-input button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #7b2952, #551938);
+    color: white;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.chat-input button:hover {
+    background: linear-gradient(135deg, #551938, #7b2952);
+    transform: scale(1.05);
+}
+
+/* Dark Theme Styling */
+body.dark-theme {
+    background-color: #1c1c1c;
+    color: #ddd;
+}
+
+body.dark-theme .login-container,
+body.dark-theme .chat-container {
+    background-color: #333;
+    color: white;
+}
+
+body.dark-theme .chat-header {
+    background: linear-gradient(135deg, #6c4f75, #4c2f4f);
+}
+
+body.dark-theme .chat-input input {
+    background-color: #555;
+    color: white;
+}
+
+body.dark-theme .chat-input input:focus {
+    background-color: #666;
+}
+
+body.dark-theme .chat-input button {
+    background: linear-gradient(135deg, #5e1d39, #842e59);
+}
+/* Voice Command Button */
+#voice-command {
+    margin-left: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 50%;
+    background-color: #7b2952;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Voice Command Button */
+#voice-command {
+    margin-left: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 50%;
+    background-color: #7b2952;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover Effect */
+#voice-command:hover {
+    background-color: #5e1d39;
+    transform: scale(1.1);
+}
+
+/* Pulsing Effect while Recording */
+#voice-command.recording {
+    animation: pulse 1s infinite;
+    background-color: #5e1d39;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(94, 29, 57, 0.7);
+    }
+    70% {
+        transform: scale(1.1);
+        box-shadow: 0 0 0 10px rgba(94, 29, 57, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(94, 29, 57, 0);
+    }
+}
