@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PSITalk</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Login Section -->
+        <div class="login-container" id="login-container">
+            <h2>Welcome to PSITalk</h2>
+            <input type="text" id="student-name" placeholder="Enter your name" required>
+            <input type="text" id="student-id" placeholder="Enter your student ID" required>
+            <button onclick="login()">Login</button>
+            <button onclick="loginAsGuest()">Login as Guest</button>
+            <p id="error-message"></p>
+        </div>
+        
+        <!-- Chat Section -->
+        <div class="chat-container" id="chat-container">
+            <div class="chat-header">
+                PSITalk
+                <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+            </div>
+            <div class="chat-box" id="chat-box">
+                <div class="message bot">
+                    <div class="bubble" id="greeting-message">Hello! How can I assist you today?</div>
+                </div>
+                <div class="typing-indicator" id="typing-indicator">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="user-input" placeholder="Type your message..." onkeypress="if(event.key === 'Enter') sendMessage()">
+                <button onclick="sendMessage()">Send</button>
+                <button id="voice-command" onclick="startVoiceCommand()">🎤</button> <!-- Voice Command Button -->
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
